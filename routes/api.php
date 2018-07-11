@@ -17,6 +17,6 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     Route::get('me', function () {
         return auth()->user();
-    });
+    })->name('me');
 
 });
