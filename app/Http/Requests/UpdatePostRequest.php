@@ -11,7 +11,7 @@ class UpdatePostRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         $user = $this->user();
         $post = $this->route('post');
@@ -24,7 +24,7 @@ class UpdatePostRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'title' => 'string|between:5,60',

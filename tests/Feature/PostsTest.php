@@ -83,7 +83,7 @@ class PostsTest extends TestCase
     public function userCanDeleteTheirPost()
     {
         $user = factory(User::class)->create();
-        Passport::actingAs($user, ['update-posts']);
+        Passport::actingAs($user, ['delete-posts']);
 
         $post = factory(Post::class)->create();
 
@@ -107,5 +107,20 @@ class PostsTest extends TestCase
         ])->assertForbidden();
 
         $this->assertDatabaseMissing('posts', ['title' => $newTitle]);
+    }
+
+    /** @test */
+    public function userCanNotDeleteAnotherUsersPost()
+    {
+        $owner = factory(User::class)->create();
+        $user = factory(User::class)->create();
+        $post = factory(Post::class)->create(['user_id' => $owner->id]);
+
+        Passport::actingAs($user, ['delete-posts']);
+
+        $this->json('DELETE', route('post.update', $post))
+            ->assertForbidden();
+
+        $this->assertDatabaseHas('posts', ['id' => $post->id]);
     }
 }

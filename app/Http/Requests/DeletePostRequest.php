@@ -11,12 +11,12 @@ class DeletePostRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         $user = $this->user();
         $post = $this->route('post');
 
-        return $user->tokenCan('update-posts') && $post->user_id == $user->id;
+        return $user->tokenCan('delete-posts') && $post->user_id == $user->id;
     }
 
     /**
@@ -24,10 +24,8 @@ class DeletePostRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 }
