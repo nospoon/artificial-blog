@@ -15,6 +15,8 @@ use Illuminate\Http\Request;
 
 Route::group(['middleware' => 'auth:api'], function () {
 
-    Route::get('me', 'TokenController@me');
+    Route::get('me', function () {
+        return auth()->user();
+    })->name('me');
 
 });
