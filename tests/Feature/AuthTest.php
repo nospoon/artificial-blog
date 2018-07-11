@@ -36,6 +36,6 @@ class AuthTest extends TestCase
                 'name' => $user->name,
                 'email' => $user->email,
             ]);
-        dd($user);
+        $this->assertAuthenticatedAs($user);
     }
 }
