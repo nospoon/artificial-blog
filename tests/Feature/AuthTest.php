@@ -24,7 +24,10 @@ class AuthTest extends TestCase
     public function testPersonalAccessTokenAuthentication()
     {
         $user = factory(User::class)->create();
-        $this->artisan('passport:client', ['--personal' => null]);
+        $this->artisan('passport:client', [
+            '--personal' => null,
+            '--no-interaction' => null
+        ]);
         $token = $user->createToken($this->faker->word)->accessToken;
 
         $this->json('GET', route('me'), [], [
