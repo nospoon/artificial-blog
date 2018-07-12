@@ -8,7 +8,7 @@
   - `php artisan key:generate`
   - `php artisan migrate`
   - `php artisan passport:install`
-4) Go into the application front-end at `http://192.168.10.10` and create a user account
+4) Go into the [application front-end](http://192.168.10.10) and create a user account
 5) After logging in, create a new Personal Access Token on the 'Access Tokens' tab
 6) You should now be able to authenticate using the newly created token by using
 
