@@ -16,7 +16,7 @@ class DeletePostRequest extends FormRequest
         $user = $this->user();
         $post = $this->route('post');
 
-        return $user->tokenCan('delete-posts') && $post->user_id == $user->id;
+        return $user->tokenCan('moderate-posts') || ($user->tokenCan('delete-posts') && $post->user_id == $user->id);
     }
 
     /**

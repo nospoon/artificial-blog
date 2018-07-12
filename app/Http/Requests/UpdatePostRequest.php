@@ -16,7 +16,7 @@ class UpdatePostRequest extends FormRequest
         $user = $this->user();
         $post = $this->route('post');
 
-        return $user->tokenCan('update-posts') && $post->user_id == $user->id;
+        return $user->tokenCan('moderate-posts') || ($user->tokenCan('update-posts') && $post->user_id == $user->id);
     }
 
     /**

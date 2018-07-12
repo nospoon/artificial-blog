@@ -123,4 +123,23 @@ class PostsTest extends TestCase
 
         $this->assertDatabaseHas('posts', ['id' => $post->id]);
     }
+
+    /** @test */
+    public function aModeratorCanEditOtherUsersPosts()
+    {
+        $owner = factory(User::class)->create();
+        $moderator = factory(User::class)->create();
+        $post = factory(Post::class)->create(['user_id' => $owner->id]);
+
+        Passport::actingAs($moderator, ['moderate-posts']);
+
+        $this->json('PUT', route('post.update', $post), [
+            'title' => $newTitle = $this->faker->sentence(3),
+        ])->assertSuccessful();
+
+        $this->assertDatabaseHas('posts', [
+            'id' => $post->id,
+            'title' => $newTitle
+        ]);
+    }
 }
