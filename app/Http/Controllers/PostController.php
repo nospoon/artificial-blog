@@ -20,7 +20,7 @@ class PostController extends Controller
      */
     public function index(ViewPostRequest $request): JsonResponse
     {
-        $posts = auth()->user()->posts;
+        $posts = $request->has('my-posts') ? auth()->user()->posts : Post::all();
 
         return response()->json($posts);
     }

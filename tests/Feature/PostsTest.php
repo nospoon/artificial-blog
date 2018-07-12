@@ -36,10 +36,25 @@ class PostsTest extends TestCase
         Passport::actingAs($user, ['view-posts']);
 
         $posts = factory(Post::class, 5)->create();
+        $otherPosts = factory(Post::class, 10)->create(['user_id' => factory(User::class)->create()->id]);
+
+        $this->json('GET', route('post.index', ['my-posts']))
+            ->assertSuccessful()
+            ->assertJsonCount($posts->count());
+    }
+
+    /** @test */
+    public function userCanViewAllPosts()
+    {
+        $user = factory(User::class)->create();
+        Passport::actingAs($user, ['view-posts']);
+
+        $posts = factory(Post::class, 5)->create();
+        $otherPosts = factory(Post::class, 10)->create(['user_id' => factory(User::class)->create()->id]);
 
         $this->json('GET', route('post.index'))
             ->assertSuccessful()
-            ->assertJsonCount($posts->count());
+            ->assertJsonCount($posts->count() + $otherPosts->count());
     }
 
     /** @test */
