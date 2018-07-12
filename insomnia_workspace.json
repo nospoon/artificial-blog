@@ -1,0 +1,264 @@
+{
+	"_type": "export",
+	"__export_format": 3,
+	"__export_date": "2018-07-12T20:24:19.155Z",
+	"__export_source": "insomnia.desktop.app:v5.16.6",
+	"resources": [
+		{
+			"_id": "wrk_afc64ddc90d946cca488e9e638841041",
+			"created": 1531167356746,
+			"description": "",
+			"modified": 1531167356746,
+			"name": "artificial",
+			"parentId": null,
+			"_type": "workspace"
+		},
+		{
+			"_id": "env_372ae389d69a48cdbe2ae5c7e5e27c95",
+			"color": null,
+			"created": 1531167356784,
+			"data": {},
+			"isPrivate": false,
+			"modified": 1531395966891,
+			"name": "New Environment",
+			"parentId": "wrk_afc64ddc90d946cca488e9e638841041",
+			"_type": "environment"
+		},
+		{
+			"_id": "jar_7d6d6ec60d1e4070afac3a9974c791e6",
+			"cookies": [
+				{
+					"creation": "2018-07-09T20:21:02.533Z",
+					"domain": "192.168.10.10",
+					"expires": "2018-07-12T13:47:26.000Z",
+					"hostOnly": true,
+					"httpOnly": true,
+					"id": "8312820717257368",
+					"key": "laravel_session",
+					"lastAccessed": "2018-07-12T11:47:26.995Z",
+					"maxAge": 7200,
+					"path": "/",
+					"value": "eyJpdiI6InpBTVJpZnBKWWJ2MnVkSGRTUkNlUWc9PSIsInZhbHVlIjoiUkhYeHA5WVdiOCtHdXVqXC9ZWXgyU1hnOUQyNFJNaTdTaEUyT0dNSTlrZnhGaHNCVkJHS3dxVEMzdHBPQmVPdTVRXC9MenduRWc1Sk1cLzJNK0lueHZcL2tnPT0iLCJtYWMiOiJlOGM2MzE3ZDg4MmU1MmIzMjE5MmNhY2ViNzcyMWY0NDMxMGE4YTJmZThlNThlYmY5MzM3NDBhMzk0NWUzZTlmIn0%3D"
+				},
+				{
+					"creation": "2018-07-10T19:44:11.364Z",
+					"domain": "192.168.10.10",
+					"expires": "2018-07-12T13:47:26.000Z",
+					"hostOnly": true,
+					"id": "7108491200558871",
+					"key": "XSRF-TOKEN",
+					"lastAccessed": "2018-07-12T11:47:26.995Z",
+					"maxAge": 7200,
+					"path": "/",
+					"value": "eyJpdiI6Im1iNmZsdWhRcHlJYnlsclBoZGF4RXc9PSIsInZhbHVlIjoidTRRNWFETHFiQXUzcUZhRjdSQytUa1N3cG9GVmZvVzJLeW1XS2FMR3FYRDNrMWFNUlBQMHBycVVlZjd2T1g5T3RtY0Z0NzF5YkVWREl1bUh4Mk4walE9PSIsIm1hYyI6IjdmNjY2OThkODhmZTZkMDg1MzM0YmVhMTMxYmE1YTI3ZTczZDJmNjE4MDhiYWM5OWJiNDYxMDJlNTM0N2JjZmUifQ%3D%3D"
+				}
+			],
+			"created": 1531167356790,
+			"modified": 1531396046995,
+			"name": "Default Jar",
+			"parentId": "wrk_afc64ddc90d946cca488e9e638841041",
+			"_type": "cookie_jar"
+		},
+		{
+			"_id": "req_b856d122562c41c39c0d7c3dc3ad0e2f",
+			"authentication": {
+				"token": "{{ token  }}",
+				"type": "bearer"
+			},
+			"body": {},
+			"created": 1531167373600,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_5fe394feac504b5a852d237590f2c8a7",
+					"name": "Content-Type",
+					"value": "application/json"
+				},
+				{
+					"disabled": false,
+					"id": "pair_769e540b4b1d4d309c05611aa9f5c060",
+					"name": "Accept",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1531421240629,
+			"method": "GET",
+			"modified": 1531425236025,
+			"name": "Show my user",
+			"parameters": [],
+			"parentId": "wrk_afc64ddc90d946cca488e9e638841041",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ url  }}/me",
+			"_type": "request"
+		},
+		{
+			"_id": "req_783aa6cf108e49868df5c2a7e0471ba4",
+			"authentication": {
+				"token": "{{ token  }}",
+				"type": "bearer"
+			},
+			"body": {},
+			"created": 1531395911454,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_d29f8988d68449b2ac20b739b7e4d182",
+					"name": "Content-Type",
+					"value": "application/json"
+				},
+				{
+					"id": "pair_67c591e8291f49cca856728542a7f948",
+					"name": "Accept",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1531421240591.5,
+			"method": "GET",
+			"modified": 1531425243452,
+			"name": "List Posts",
+			"parameters": [],
+			"parentId": "wrk_afc64ddc90d946cca488e9e638841041",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ url  }}/post",
+			"_type": "request"
+		},
+		{
+			"_id": "req_d3bd059cc6ac47c28df6f5154cd9b19c",
+			"authentication": {
+				"token": "{{ token  }}",
+				"type": "bearer"
+			},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"title\":\"Lorem ipsum dolor sit amet\",\n\t\"content\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam suscipit mi sed mi tempor, id hendrerit lacus dignissim. Mauris sed tellus nibh. Morbi non massa lobortis, dapibus erat vitae, fermentum ex. Curabitur eu euismod quam. Praesent tincidunt consequat risus non pharetra. Maecenas eu molestie erat. Etiam auctor vehicula eleifend. Donec a dolor in sapien blandit ornare vitae in ex. Integer congue leo velit, at tincidunt metus mattis vel. Praesent efficitur placerat diam. Ut vulputate justo leo, a interdum lacus scelerisque vel. Nulla facilisi. In sed magna sed lorem eleifend vehicula a ac risus.\"\n}"
+			},
+			"created": 1531421240579,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_7dc47df8c3aa448993e50e74c3d8af94",
+					"name": "Content-Type",
+					"value": "application/json"
+				},
+				{
+					"id": "pair_834e8eab30254290ae528c42fbd3bdf8",
+					"name": "Accept",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1531421240579,
+			"method": "POST",
+			"modified": 1531426857273,
+			"name": "Create Post",
+			"parameters": [],
+			"parentId": "wrk_afc64ddc90d946cca488e9e638841041",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ url  }}/post",
+			"_type": "request"
+		},
+		{
+			"_id": "req_30509e45a08b4a8b9f9b11583533d9d1",
+			"authentication": {
+				"token": "{{ token  }}",
+				"type": "bearer"
+			},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"title\":\"Something else\"\n}"
+			},
+			"created": 1531425126819,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_7dc47df8c3aa448993e50e74c3d8af94",
+					"name": "Content-Type",
+					"value": "application/json"
+				},
+				{
+					"id": "pair_80817db8403e413ca697b44dc5aa1e10",
+					"name": "Accept",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1531413856180,
+			"method": "PUT",
+			"modified": 1531426809177,
+			"name": "Update Post",
+			"parameters": [],
+			"parentId": "wrk_afc64ddc90d946cca488e9e638841041",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ url  }}/post/1",
+			"_type": "request"
+		},
+		{
+			"_id": "req_0c1eb86cdf004fffb9ff5cbdc5dc1d74",
+			"authentication": {
+				"token": "{{ token  }}",
+				"type": "bearer"
+			},
+			"body": {},
+			"created": 1531425210944,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_7dc47df8c3aa448993e50e74c3d8af94",
+					"name": "Content-Type",
+					"value": "application/json"
+				},
+				{
+					"id": "pair_80817db8403e413ca697b44dc5aa1e10",
+					"name": "Accept",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1531421240585.25,
+			"method": "GET",
+			"modified": 1531425245220,
+			"name": "Show Post",
+			"parameters": [],
+			"parentId": "wrk_afc64ddc90d946cca488e9e638841041",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ url  }}/post/1",
+			"_type": "request"
+		},
+		{
+			"_id": "env_f926599beb1b486b9b91030d459a7c30",
+			"color": null,
+			"created": 1531395945271,
+			"data": {
+				"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjdiNzhlMWY4MTNmYTc2YWIzYjcyMGU5NzI1NWE3YWUzNTE5Y2U4MmYxYmM2NzRjYjkxODkyOTg3ZWE4MDY2ZGNkYWNlNzkyNDA2MGE1ZDAwIn0.eyJhdWQiOiIxIiwianRpIjoiN2I3OGUxZjgxM2ZhNzZhYjNiNzIwZTk3MjU1YTdhZTM1MTljZTgyZjFiYzY3NGNiOTE4OTI5ODdlYTgwNjZkY2RhY2U3OTI0MDYwYTVkMDAiLCJpYXQiOjE1MzE0MjQ4MDcsIm5iZiI6MTUzMTQyNDgwNywiZXhwIjoxNTYyOTYwODA3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.E1fxVS3DcaAiYmgl1T9zoJuXqb1kII7Q1mia6bBzZSWoOcmOvZkg86dVEvVsnlYGHi4B6_XQEtYVolFyccTXf1CuRmcr9daSplvEXoyDCgbCerpMN-1HSf2p2CYyO1jxAuMf_kfK32Wn5nXRrdXwVZ3VFJiYipd_05wHtM7ALbWwjDC-z4StcU9v76hh1pippr40Ne7QD6rNM9ii1SNrIjw4-Eh0H-AEff9SKMgBmP9kAN_cPPaSXU4St9nBHiKQwoKUxwZbwji6DHg_Ehnl3Wh9lovAFIhOTq4oIKNCpQKgmsa1YsLoxfd0Jqd2FE_aulx5WrqoK-vZqDXOnNRdQFLBf-9-VeynJUd2X9yS1wCwsUS7FvLe8VvinOkOnPxtzjB25dRNkU5_6raubdrso7HEGSC0k1Rdoc7F60IN0Ps3MA0qR9notEGUgwNpd1KYL23HfgDPoUFPXe-U_D3M1uKJKTb_SjYVc5bI9jI2PwCUtbdwSlyrt0w6jMbr69DdtjHsaTuZw3m25wYJP19vCng38HIh2irbwvEUwYwgR_P5DcqOe1PHBsmqIFWBEH4bkOmHNSmJSM3DLRbC5Drpi867DFsy2KxsOMWdOwiKGvX4zpp4O86lO5XE8zc8pv_pwXgAT7SDmVs5Q0ArSULU3HEW9TC2BweFy8MvlL5Rwrg",
+				"url": "http://192.168.10.10/api"
+			},
+			"isPrivate": false,
+			"modified": 1531424847656,
+			"name": "Dev",
+			"parentId": "env_372ae389d69a48cdbe2ae5c7e5e27c95",
+			"_type": "environment"
+		}
+	]
+}
