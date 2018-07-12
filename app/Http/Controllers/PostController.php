@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreatePostRequest;
 use App\Http\Requests\DeletePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Http\Requests\ViewPostRequest;
 use App\Post;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
@@ -14,9 +15,10 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param ViewPostRequest $request
      * @return JsonResponse
      */
-    public function index(): JsonResponse
+    public function index(ViewPostRequest $request): JsonResponse
     {
         $posts = auth()->user()->posts;
 
@@ -42,10 +44,11 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
+     * @param ViewPostRequest $request
      * @param  Post $post
      * @return JsonResponse
      */
-    public function show(Post $post): JsonResponse
+    public function show(ViewPostRequest $request, Post $post): JsonResponse
     {
         return response()->json($post);
     }
@@ -67,6 +70,7 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
+     * @param DeletePostRequest $request
      * @param  Post $post
      * @return JsonResponse
      * @throws \Exception
