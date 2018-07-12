@@ -19,4 +19,5 @@ Route::group(['middleware' => 'auth:api'], function () {
         return auth()->user();
     })->name('me');
 
+    Route::resource('post', 'PostController')->except(['create', 'edit']);
 });
