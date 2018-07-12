@@ -13,7 +13,7 @@ class ViewPostRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return $this->user()->tokenCan('view-posts');
+        return true;
     }
 
     /**

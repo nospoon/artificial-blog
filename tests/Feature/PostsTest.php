@@ -17,7 +17,7 @@ class PostsTest extends TestCase
     public function authenticatedUserCanViewTheirPost()
     {
         $user = factory(User::class)->create();
-        Passport::actingAs($user, ['view-posts']);
+        Passport::actingAs($user);
 
         $post = factory(Post::class)->create();
 
@@ -33,7 +33,7 @@ class PostsTest extends TestCase
     public function userCanViewAllTheirPosts()
     {
         $user = factory(User::class)->create();
-        Passport::actingAs($user, ['view-posts']);
+        Passport::actingAs($user);
 
         $posts = factory(Post::class, 5)->create();
         $otherPosts = factory(Post::class, 10)->create(['user_id' => factory(User::class)->create()->id]);
@@ -47,7 +47,7 @@ class PostsTest extends TestCase
     public function userCanViewAllPosts()
     {
         $user = factory(User::class)->create();
-        Passport::actingAs($user, ['view-posts']);
+        Passport::actingAs($user);
 
         $posts = factory(Post::class, 5)->create();
         $otherPosts = factory(Post::class, 10)->create(['user_id' => factory(User::class)->create()->id]);
@@ -61,7 +61,7 @@ class PostsTest extends TestCase
     public function userCanCreatePosts()
     {
         $user = factory(User::class)->create();
-        Passport::actingAs($user, ['create-posts']);
+        Passport::actingAs($user);
 
         $post = factory(Post::class)->make(); // Only creates the object, without saving it to db
 
@@ -80,7 +80,7 @@ class PostsTest extends TestCase
     public function userCanUpdateTheirPost()
     {
         $user = factory(User::class)->create();
-        Passport::actingAs($user, ['update-posts']);
+        Passport::actingAs($user);
 
         $post = factory(Post::class)->create();
 
@@ -98,7 +98,7 @@ class PostsTest extends TestCase
     public function userCanDeleteTheirPost()
     {
         $user = factory(User::class)->create();
-        Passport::actingAs($user, ['delete-posts']);
+        Passport::actingAs($user);
 
         $post = factory(Post::class)->create();
 
@@ -115,7 +115,7 @@ class PostsTest extends TestCase
         $user = factory(User::class)->create();
         $post = factory(Post::class)->create(['user_id' => $owner->id]);
 
-        Passport::actingAs($user, ['update-posts']);
+        Passport::actingAs($user);
 
         $this->json('PUT', route('post.update', $post), [
             'title' => $newTitle = $this->faker->sentence(3),
@@ -131,7 +131,7 @@ class PostsTest extends TestCase
         $user = factory(User::class)->create();
         $post = factory(Post::class)->create(['user_id' => $owner->id]);
 
-        Passport::actingAs($user, ['delete-posts']);
+        Passport::actingAs($user);
 
         $this->json('DELETE', route('post.update', $post))
             ->assertForbidden();
@@ -143,10 +143,10 @@ class PostsTest extends TestCase
     public function aModeratorCanEditOtherUsersPosts()
     {
         $owner = factory(User::class)->create();
-        $moderator = factory(User::class)->create();
+        $moderator = factory(User::class)->states('admin')->create();
         $post = factory(Post::class)->create(['user_id' => $owner->id]);
 
-        Passport::actingAs($moderator, ['moderate-posts']);
+        Passport::actingAs($moderator);
 
         $this->json('PUT', route('post.update', $post), [
             'title' => $newTitle = $this->faker->sentence(3),
@@ -163,7 +163,7 @@ class PostsTest extends TestCase
     {
         $author = factory(User::class)->create();
         $user = factory(User::class)->create();
-        Passport::actingAs($user, ['view-posts']);
+        Passport::actingAs($user);
 
         $posts = factory(Post::class, 5)->create();
         $postsToFind = factory(Post::class, 6)->create(['user_id' => $author->id]);

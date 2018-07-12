@@ -13,10 +13,7 @@ class DeletePostRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        $user = $this->user();
-        $post = $this->route('post');
-
-        return $user->tokenCan('moderate-posts') || ($user->tokenCan('delete-posts') && $post->user_id == $user->id);
+        return $this->user()->isAdmin() || $this->route('post')->user_id == $this->user()->id;
     }
 
     /**
