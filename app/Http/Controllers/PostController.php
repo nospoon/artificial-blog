@@ -7,6 +7,8 @@ use App\Http\Requests\CreatePostRequest;
 use App\Http\Requests\DeletePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Http\Requests\ViewPostRequest;
+use App\Http\Resources\PostResource;
+use App\Http\Resources\PostResourceCollection;
 use App\Post;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
@@ -21,9 +23,9 @@ class PostController extends Controller
      */
     public function index(ViewPostRequest $request, PostFilters $filters): JsonResponse
     {
-        $posts = Post::filter($filters)->get();
+        $posts = Post::filter($filters)->paginate();
 
-        return response()->json($posts);
+        return PostResource::collection($posts)->response($request);
     }
 
     /**
@@ -39,7 +41,7 @@ class PostController extends Controller
         $post->author()->associate($request->user());
         $post->saveOrFail();
 
-        return response()->json($post, Response::HTTP_CREATED);
+        return PostResource::make($post)->response($request);
     }
 
     /**
@@ -51,7 +53,7 @@ class PostController extends Controller
      */
     public function show(ViewPostRequest $request, Post $post): JsonResponse
     {
-        return response()->json($post);
+        return PostResource::make($post)->response($request);
     }
 
     /**
@@ -65,7 +67,7 @@ class PostController extends Controller
     {
         $post->update($request->all());
 
-        return response()->json($post);
+        return PostResource::make($post)->response($request);
     }
 
     /**

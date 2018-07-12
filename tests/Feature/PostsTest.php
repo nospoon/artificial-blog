@@ -23,7 +23,7 @@ class PostsTest extends TestCase
 
         $this->json('GET', route('post.show', $post))
             ->assertSuccessful()
-            ->assertJson([
+            ->assertJsonFragment([
                 'title' => $post->title,
                 'content' => $post->content,
             ]);
@@ -40,7 +40,7 @@ class PostsTest extends TestCase
 
         $this->json('GET', route('post.index', ['my-posts']))
             ->assertSuccessful()
-            ->assertJsonCount($posts->count());
+            ->assertJsonCount($posts->count(), 'data');
     }
 
     /** @test */
@@ -54,7 +54,7 @@ class PostsTest extends TestCase
 
         $this->json('GET', route('post.index'))
             ->assertSuccessful()
-            ->assertJsonCount($posts->count() + $otherPosts->count());
+            ->assertJsonCount($posts->count() + $otherPosts->count(), 'data');
     }
 
     /** @test */
@@ -170,9 +170,31 @@ class PostsTest extends TestCase
 
         $this->json('GET', route('post.index', ['user' => $author->id]))
             ->assertSuccessful()
-            ->assertJsonCount($postsToFind->count())
+            ->assertJsonCount($postsToFind->count(), 'data')
             ->assertJsonFragment([
                 'id' => $postsToFind->random()->id
+            ]);
+    }
+
+    /** @test */
+    public function postsCanBeSplitIntoMultiplePages()
+    {
+        $user = factory(User::class)->create();
+        Passport::actingAs($user);
+
+        $posts = factory(Post::class, 50)->create();
+
+        $this->json('GET', route('post.index'))
+            ->assertSuccessful()
+            ->assertJsonFragment([
+                'current_page' => 1,
+                'total' => $posts->count()
+            ]);
+
+        $this->json('GET', route('post.index', ['page' => 2]))
+            ->assertSuccessful()
+            ->assertJsonFragment([
+                'current_page' => 2,
             ]);
     }
 }
