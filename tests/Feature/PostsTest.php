@@ -157,4 +157,22 @@ class PostsTest extends TestCase
             'title' => $newTitle
         ]);
     }
+
+    /** @test */
+    public function postsCanBeFilteredByAuthor()
+    {
+        $author = factory(User::class)->create();
+        $user = factory(User::class)->create();
+        Passport::actingAs($user, ['view-posts']);
+
+        $posts = factory(Post::class, 5)->create();
+        $postsToFind = factory(Post::class, 6)->create(['user_id' => $author->id]);
+
+        $this->json('GET', route('post.index', ['user' => $author->id]))
+            ->assertSuccessful()
+            ->assertJsonCount($postsToFind->count())
+            ->assertJsonFragment([
+                'id' => $postsToFind->random()->id
+            ]);
+    }
 }

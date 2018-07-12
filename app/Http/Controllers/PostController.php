@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Filters\PostFilters;
 use App\Http\Requests\CreatePostRequest;
 use App\Http\Requests\DeletePostRequest;
 use App\Http\Requests\UpdatePostRequest;
@@ -18,9 +19,9 @@ class PostController extends Controller
      * @param ViewPostRequest $request
      * @return JsonResponse
      */
-    public function index(ViewPostRequest $request): JsonResponse
+    public function index(ViewPostRequest $request, PostFilters $filters): JsonResponse
     {
-        $posts = $request->has('my-posts') ? auth()->user()->posts : Post::all();
+        $posts = Post::filter($filters)->get();
 
         return response()->json($posts);
     }

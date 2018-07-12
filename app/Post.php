@@ -2,11 +2,14 @@
 
 namespace App;
 
+use App\Traits\HasQueryFilters;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Post extends Model
 {
+    use HasQueryFilters;
+
     protected $fillable = ['title', 'content'];
 
     /**
