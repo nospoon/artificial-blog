@@ -15,9 +15,9 @@ use Illuminate\Http\Request;
 
 Route::group(['middleware' => 'auth:api'], function () {
 
-    Route::get('me', function () {
-        return auth()->user();
-    })->name('me');
-
     Route::resource('post', 'PostController')->except(['create', 'edit']);
+
+    Route::resource('user', 'UserController')->only(['index']);
+
+    Route::get('me', 'UserController@me')->name('me');
 });
