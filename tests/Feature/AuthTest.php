@@ -34,7 +34,7 @@ class AuthTest extends TestCase
             'Authorization' => 'Bearer ' . $token
         ])
             ->assertSuccessful()
-            ->assertJson([
+            ->assertJsonFragment([
                 'id' => $user->id,
                 'name' => $user->name,
                 'email' => $user->email,
